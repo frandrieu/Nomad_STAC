@@ -12,7 +12,7 @@ from pystac import Catalog, Item, Asset, MediaType, CatalogType, Collection, Ext
 from datetime import datetime
 import json
 from pystac.extensions.file import FileExtension, ExtensionHooks
-
+from shapely.geometry import mapping
 import hashlib
 import fsspec
 
@@ -187,7 +187,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         item_datetime = start_time_value
         item = Item(
             id=f'{file_name}',
-            geometry=polygons,
+            geometry=mapping(polygons),
             bbox=bbox,
             datetime=item_datetime,
             properties={}
@@ -276,22 +276,22 @@ folder_path = 'five_days_lno'
 nomad_stac_catalog = create_stac_collection(folder_path)
 
 # Save the STAC catalog to a file
-#nomat_stac_catalog.normalize_and_save('output/catalog.json')
+nomad_stac_catalog.normalize_and_save('output/catalog.json')
 
 
 items = list(nomad_stac_catalog.get_items(recursive=True))
 
 print(f"Number of items: {len(items)}")
-for item in items:
-    print(f"- {item.id}")
+#for item in items:
+#    print(f"- {item.id}")
     
 # Clean the export folder
 
 # Normilize hrefs
-nomad_stac_catalog.normalize_hrefs('output/nomad_catalog.json')
-nomad_stac_catalog.describe()
-collec=nomad_stac_catalog.get_child(id='5 days lno - collection')
-print(json.dumps(collec.to_dict(), indent=4))
+#nomad_stac_catalog.normalize_hrefs('output/nomad_catalog.json')
+#nomad_stac_catalog.describe()
+#collec=nomad_stac_catalog.get_child(id='5 days lno - collection')
+#print(json.dumps(collec.to_dict(), indent=4))
 #nomad_stac_catalog.save(catalog_type=CatalogType.SELF_CONTAINED)
 
 '''

@@ -1,0 +1,81 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "20230101_231028_1p0a_LNO_1_DP_167_00533_119",
+  "properties": {
+    "ssys:targets": [
+      "Mars"
+    ],
+    "processing:level": "footprint",
+    "proj:wkt2": "GEOGCRS[\"Mars (2015) - Sphere / Ocentric\",\n                    DATUM[\"Mars (2015) - Sphere\",\n                        ELLIPSOID[\"Mars (2015) - Sphere\", 3396190, 0,\n                    LENGTHUNIT[\"metre\", 1, ID[\"EPSG\", 9001]]],\n                    ANCHOR[\"Viking 1 lander : 47.95137 W\"]],\n                    PRIMEM[\"Reference Meridian\", 0,\n                    ANGLEUNIT[\"degree\", 0.0174532925199433, ID[\"EPSG\", 9122]]],\n            CS[ellipsoidal, 2],\n                AXIS[\"geodetic latitude (Lat)\", north,\n    ORDER[1],\n                    ANGLEUNIT[\"degree\", 0.0174532925199433]],\n                AXIS[\"geodetic longitude (Lon)\", east,\n    ORDER[2],\n                    ANGLEUNIT[\"degree\", 0.0174532925199433]],\n            ID[\"IAU\", 49900, 2015],\n            REMARK[\"Use semi-major radius as sphere radius for interoperability. Source of IAU Coordinate systems:\n    doi://10.1007/s10569-017-9805-5\"]]",
+    "datetime": "2023-01-01T23:20:38.294179Z"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          73.33640461504022,
+          -3.0063840515913283
+        ],
+        [
+          73.60940491084996,
+          -3.0249578842288822
+        ],
+        [
+          73.66325755700007,
+          -2.6959549689405256
+        ],
+        [
+          73.6637051764101,
+          -2.6883907544948493
+        ],
+        [
+          73.39050145825178,
+          -2.672191042580835
+        ],
+        [
+          73.33691613807858,
+          -2.998813738281682
+        ],
+        [
+          73.33640461504022,
+          -3.0063840515913283
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "/Users/fandrieu/Documents/Nomad_STAC/output/catalog.json",
+      "type": "application/json",
+      "title": "ExoMars NOMAD/LNO footprints"
+    },
+    {
+      "rel": "collection",
+      "href": "/Users/fandrieu/Documents/Nomad_STAC/output/5 days lno - collection/collection.json",
+      "type": "application/json",
+      "title": "5 days lno - PySTAC prototype"
+    },
+    {
+      "rel": "parent",
+      "href": "/Users/fandrieu/Documents/Nomad_STAC/output/5 days lno - collection/collection.json",
+      "type": "application/json",
+      "title": "5 days lno - PySTAC prototype"
+    }
+  ],
+  "assets": {},
+  "bbox": [
+    -23.432120964251652,
+    -75.91862416886251,
+    111.4232013499094,
+    69.84238769507006
+  ],
+  "stac_extensions": [
+    "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "collection": "5 days lno - collection"
+}
