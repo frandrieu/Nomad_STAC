@@ -112,10 +112,15 @@ order_all = list()
 for footpos in range(0, nb_footprint):
 
     #### create a geopandas GeoDataFrame with all corner points
-    namvector = np.linspace(1,4*2,4*2).astype('str')
+    #namvector = np.linspace(1,4*2,4*2).astype('str')
+    namvector = np.linspace(1,4,4).astype('str')
     
+    '''
     latvector = np.ravel(np.array([latp4[footpos,:], latp1[footpos,:], latp2[footpos,:], latp3[footpos,:]]))
     lonvector = np.ravel(np.array([lonp4[footpos,:], lonp1[footpos,:], lonp2[footpos,:], lonp3[footpos,:]]))
+    '''
+    latvector = np.ravel(np.array([latp4[footpos,1], latp1[footpos,1], latp2[footpos,1], latp3[footpos,1]]))
+    lonvector = np.ravel(np.array([lonp4[footpos,1], lonp1[footpos,1], lonp2[footpos,1], lonp3[footpos,1]]))
     
     df = pd.DataFrame(
         {'Point': namvector,
@@ -172,7 +177,7 @@ gdfall.crs = pyproj.CRS('+proj=longlat +a=3396190 +b=3376200')
 gdfall.to_file(WORKING_DIRECTORY+os.sep+filename+".shp")
 
 #save as GeoJSON
-gdfall.to_file(WORKING_DIRECTORY+os.sep+filename+".geojson", driver='GeoJSON')
+gdfall.to_file(WORKING_DIRECTORY+os.sep+filename+"_1.geojson", driver='GeoJSON')
 
 
 #### plot the results

@@ -20,7 +20,7 @@ from pystac.extensions.projection import ProjectionExtension
 import os
 import geopandas as gpd
 
-def create_stac_item(file_path, polygon, bbox, start_time_value, item_id):
+def create_stac_item(file_path, polygon, bbox, start_time_value, lid, item_id):
     # Create a STAC item for each polygon in the GeoJSON file
     #item_id = f'{os.path.splitext(os.path.basename(file_path))[0]}_{polygon.wkt}'  # Using polygon's WKT as part of the item ID
     #item = Item(id=item_id, geometry=polygon, bbox=bbox)
@@ -36,7 +36,8 @@ def create_stac_item(file_path, polygon, bbox, start_time_value, item_id):
         geometry=mapping(polygon),
         bbox=list(bbox),
         datetime=item_datetime,
-        properties={}
+        properties={},
+        href=lid
     )
     '''
     # creation de la ressource Asset
@@ -71,7 +72,7 @@ def create_stac_item(file_path, polygon, bbox, start_time_value, item_id):
     item.stac_extensions.append('https://stac-extensions.github.io/file/v2.1.0/schema.json')#)
     item.properties['ssys:targets'] = ['Mars']
     
-    item.properties['processing:level']='footprint'
+    item.properties['processing:level']='Ancillary Data Record'
     
     item_projection = ProjectionExtension.ext(item, add_if_missing=True)
     item_projection.wkt2 = """GEOGCRS["Mars (2015) - Sphere / Ocentric",
@@ -126,7 +127,8 @@ def get_geojson_info(file_path):
 
     # Extract bounding box (bbox) boundaries
     bbox = gdf.total_bounds
-
+    psa_id = ' https://psa.esa.int/psa/#/pages/search?p=' + gdf.iloc[0].get('psa_lid', None)
+    
     # Extract start_time from GeoJSON file (assuming it's in a 'start_time' property)
     start_time_str = gdf.iloc[0].get('start_time', None)
 
@@ -136,7 +138,7 @@ def get_geojson_info(file_path):
     # Extract polygons
     polygons = gdf.geometry.tolist()
 
-    return polygons, bbox, start_time_value
+    return polygons, bbox, start_time_value, psa_id
 
 
 
@@ -239,7 +241,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
     ]
     
     PROCESSING = {
-        'processing:level': 'footprint',
+        'processing:level': 'Ancillary Data Record',
         
     }
     
@@ -285,14 +287,14 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
 
     for file_name in files:
         file_path = os.path.join(folder_path, file_name)
-        polygons, bbox, start_time_value = get_geojson_info(file_path)
+        polygons, bbox, start_time_value, psa_id = get_geojson_info(file_path)
         
         # Parse start_time string to datetime object
         #start_time_value = datetime.strptime(start_time_str, '%Y %b %d %H:%M:%S.%f') if start_time_str else None
         for idx, polygon in enumerate(polygons):
             item_id=f'{os.path.splitext(os.path.basename(file_path))[0]}_{idx}'
             # Create a STAC item for each polygon
-            item = create_stac_item(file_path, polygon, bbox, start_time_value, item_id)
+            item = create_stac_item(file_path, polygon, bbox, start_time_value, psa_id, item_id)
             
             # Add the item to the catalog
             #catalog.add_item(item)
@@ -310,10 +312,8 @@ nomad_stac_catalog = create_stac_collection(folder_path)
 
 
 # Save the STAC catalog to a file
-nomad_stac_catalog.normalize_and_save(root_href='output/',catalog_type=CatalogType.SELF_CONTAINED)
 nomad_stac_catalog.normalize_hrefs('output/')
-nomad_stac_catalog.save(catalog_type=CatalogType.SELF_CONTAINED )
-
+nomad_stac_catalog.save('output/' )
 items = list(nomad_stac_catalog.get_items(recursive=True))
 
 print(f"Number of items: {len(items)}")
