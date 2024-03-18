@@ -306,7 +306,7 @@ def add_items(folder_path, collec, output_dir):
             title=file_path,
             description="Orbit "+file_path,
             extent=Extent(
-                spatial=SpatialExtent(bbox),
+                spatial=SpatialExtent(list(bbox)),
                 temporal=TemporalExtent([start_time_value, end_time_value])
             ),
             license="proprietary"
