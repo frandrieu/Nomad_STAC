@@ -18,7 +18,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import geopandas
 import pyproj
-from shapely.geometry import Polygon
+#### START MODIFICATIONS 01/03/24 !!!!
+from shapely.geometry import Polygon, MultiPolygon
+#### END MODIFICATIONS 01/03/24 !!!!
 import rasterio
 import h5py
 import os as os
@@ -39,8 +41,8 @@ WORKING_DIRECTORY = "/Users/fandrieu/Documents/Nomad_STAC"
 
 # filename = "20230201_004835_1p0a_LNO_1_DF_168" #Ascraeus, DF_168
 # filename = "20230124_213650_1p0a_LNO_1_DP_168" #Ascraeus, DF_189
-
-filename = "20211207_103950_1p0a_LNO_1_DP_168" #Arsia, only 168_DP (older) and 168_DF 
+#filename = "20211207_103950_1p0a_LNO_1_DP_168" #Arsia, only 168_DP (older) and 168_DF 
+filename = "20230105_174515_1p0a_LNO_1_DP_168"
 #20221121_060628_1p0a_LNO_1_DF_168
 # filename = "20230123_220045_1p0a_LNO_1_DP_168" #Arsia, DF_189
 
@@ -113,43 +115,109 @@ for footpos in range(0, nb_footprint):
 
     #### create a geopandas GeoDataFrame with all corner points
     #namvector = np.linspace(1,4*2,4*2).astype('str')
-    namvector = np.linspace(1,4,4).astype('str')
     
-    '''
+    namvector = np.linspace(1,4*2,4*2).astype('str')
+        
     latvector = np.ravel(np.array([latp4[footpos,:], latp1[footpos,:], latp2[footpos,:], latp3[footpos,:]]))
     lonvector = np.ravel(np.array([lonp4[footpos,:], lonp1[footpos,:], lonp2[footpos,:], lonp3[footpos,:]]))
-    '''
-    latvector = np.ravel(np.array([latp4[footpos,1], latp1[footpos,1], latp2[footpos,1], latp3[footpos,1]]))
-    lonvector = np.ravel(np.array([lonp4[footpos,1], lonp1[footpos,1], lonp2[footpos,1], lonp3[footpos,1]]))
     
-    df = pd.DataFrame(
-        {'Point': namvector,
-         'Latitude': latvector,
-         'Longitude': lonvector})
-    
-    #create a geopandas GeoDataFrame with an associated point in corresponding lat/long
-    gdf = geopandas.GeoDataFrame(
-        df, geometry=geopandas.points_from_xy(df.Longitude, df.Latitude))
-    
-    #Define the CRS (planet Mars)
-    gdf.crs = pyproj.CRS('+proj=longlat +a=3396190 +b=3376200')
-    
-    
-    convexhull = gdf.unary_union.convex_hull
-    
-    convexhullbound = convexhull.boundary.coords.xy #get the convexhull of the boundaries
-    convexhullcentroid = convexhull.centroid.coords.xy #get the center of the convexhull
-    
-    nbcorner = len(convexhullbound[0])
-    shape_footprint=list()
-    for i in  range(0,nbcorner):
-        shape_footprint.append( (convexhullbound[0][i], convexhullbound[1][i]) )
+#### START MODIFICATIONS 01/03/24 !!!!
+    if (np.min(lonvector) < -170.) and (np.max(lonvector) > 170. ):
+       lonvector1=lonvector[np.where(lonvector < 0.)]
+       lonvector2=lonvector[np.where(lonvector > 0.)]
+       latvector1=latvector[np.where(lonvector < 0.)]
+       latvector2=latvector[np.where(lonvector > 0.)]
+       y1 = latvector1[0] + ((180.-lonvector1[0]) * (latvector2[0] - latvector1[0])) / (lonvector2[0]+180. - lonvector1[0])
+       y2 = latvector1[1] + ((180.-lonvector1[1]) * (latvector2[1] - latvector1[1])) / (lonvector2[1]+180. - lonvector1[1])
+       newlatvector1=np.append(latvector1, [y1, y2])
+       newlonvector1=np.append(lonvector1, [-180., -180.])
+       newlatvector2=np.append(latvector2, [y1, y2])
+       newlonvector2=np.append(lonvector2, [180., 180.])
+       nv1=np.linspace(1,len(newlatvector1),len(newlatvector1)).astype('str')
+       df1 = pd.DataFrame(
+           {'Point': nv1,
+            'Latitude': newlatvector1,
+            'Longitude': newlonvector1})
+       
+       gdf1 = geopandas.GeoDataFrame(
+           df1, geometry=geopandas.points_from_xy(df1.Longitude, df1.Latitude))
+       
+       #Define the CRS (planet Mars)
+       gdf1.crs = pyproj.CRS('+proj=longlat +a=3396190 +b=3376200')
+       
+       
+       convexhull1 = gdf1.unary_union.convex_hull
+       
+       convexhull1bound = convexhull1.boundary.coords.xy #get the convexhull of the boundaries
+       convexhull1centroid = convexhull1.centroid.coords.xy #get the center of the convexhull
+       
+       nbcorner1 = len(convexhull1bound[0])
+       shape_footprint1=list()
+       for i in  range(0,nbcorner1):
+           shape_footprint1.append( (convexhull1bound[0][i], convexhull1bound[1][i]) )
+       nv2=np.linspace(1,len(newlatvector2),len(newlatvector2)).astype('str')   
+       df2 = pd.DataFrame(
+           {'Point': nv2,
+            'Latitude': newlatvector2,
+            'Longitude': newlonvector2})
+       gdf2 = geopandas.GeoDataFrame(
+           df2, geometry=geopandas.points_from_xy(df2.Longitude, df2.Latitude))
+       
+       #Define the CRS (planet Mars)
+       gdf2.crs = pyproj.CRS('+proj=longlat +a=3396190 +b=3376200')
+       
+       
+       convexhull2 = gdf2.unary_union.convex_hull
+       
+       convexhull2bound = convexhull2.boundary.coords.xy #get the convexhull of the boundaries
+       convexhull2centroid = convexhull2.centroid.coords.xy #get the center of the convexhull
+       
+       nbcorner2 = len(convexhull2bound[0])
+       shape_footprint2=list()
+       for i in  range(0,nbcorner2):
+           shape_footprint2.append( (convexhull2bound[0][i], convexhull2bound[1][i]) )
+           
+       polygon_all_footprint.append(MultiPolygon([Polygon(shape_footprint1), Polygon(shape_footprint2)]))
+       filenames_all.append(filename)
+       convexhullcentroid_lat_all.append(np.mean([convexhull1centroid[1][0], convexhull2centroid[1][0]])) 
+       centrolon=np.mean([convexhull1centroid[0][0]+360, convexhull2centroid[0][0]])
+       if centrolon > 180.: centrolon=centrolon-360.
+       convexhullcentroid_lon_all.append(centrolon)
+       order_all.append( int(order) )
+    else:
+        df = pd.DataFrame(
+            {'Point': namvector,
+             'Latitude': latvector,
+             'Longitude': lonvector})
         
-    polygon_all_footprint.append(Polygon(shape_footprint))
-    filenames_all.append(filename)
-    convexhullcentroid_lat_all.append(convexhullcentroid[1][0]) 
-    convexhullcentroid_lon_all.append(convexhullcentroid[0][0])
-    order_all.append( int(order) )
+        #create a geopandas GeoDataFrame with an associated point in corresponding lat/long
+        
+             
+        gdf = geopandas.GeoDataFrame(
+            df, geometry=geopandas.points_from_xy(df.Longitude, df.Latitude))
+        
+        #Define the CRS (planet Mars)
+        gdf.crs = pyproj.CRS('+proj=longlat +a=3396190 +b=3376200')
+        
+        
+        convexhull = gdf.unary_union.convex_hull
+        
+        convexhullbound = convexhull.boundary.coords.xy #get the convexhull of the boundaries
+        convexhullcentroid = convexhull.centroid.coords.xy #get the center of the convexhull
+        
+        nbcorner = len(convexhullbound[0])
+        shape_footprint=list()
+        for i in  range(0,nbcorner):
+            shape_footprint.append( (convexhullbound[0][i], convexhullbound[1][i]) )
+            
+        polygon_all_footprint.append(Polygon(shape_footprint))
+        filenames_all.append(filename)
+        convexhullcentroid_lat_all.append(convexhullcentroid[1][0]) 
+        convexhullcentroid_lon_all.append(convexhullcentroid[0][0])
+        order_all.append( int(order) )
+ 
+        
+#####END MODIFICATIONS 01/03/24 !!!!
     
 # generate average global values
 mean_ls =  np.mean(ls, axis=1)

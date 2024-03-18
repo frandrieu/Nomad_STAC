@@ -32,7 +32,7 @@ def create_stac_item(file_path, polygon, bbox, start_time_value, lid, item_id):
    # Create a STAC item for each GeoJSON file
     item_datetime = start_time_value
     item = Item(
-        id=lid,
+        id=item_id,
         geometry=mapping(polygon),
         bbox=list(bbox),
         datetime=item_datetime,
