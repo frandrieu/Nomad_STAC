@@ -21,6 +21,32 @@ from pystac.extensions.eo import Band
 import os
 import geopandas as gpd
 
+import numpy as np
+from pystac.stac_io import DefaultStacIO
+from typing import Any
+  
+class MyCustomStacIo(DefaultStacIO):
+    
+    class NpJsonEncoder(json.JSONEncoder):
+        """Serializes numpy objects as json."""
+
+        def default(self, obj):
+            if isinstance(obj, np.integer):
+                return int(obj)
+            elif isinstance(obj, np.bool_):
+                return bool(obj)
+            elif isinstance(obj, np.floating):
+                if np.isnan(obj):
+                    return None  # Serialized as JSON null.
+                return float(obj)
+            elif isinstance(obj, np.ndarray):
+                return obj.tolist()
+            else:
+                return super().default(obj)  
+      
+    def json_dumps(self, json_dict: dict[str, Any], *args: Any, **kwargs: Any) -> str:
+        return super().json_dumps(json_dict, cls = self.NpJsonEncoder, *args, **kwargs)
+
 def create_stac_item(file_path, polygon, bbox, start_time_value, lid, item_id):
     # Create a STAC item for each polygon in the GeoJSON file
     #item_id = f'{os.path.splitext(os.path.basename(file_path))[0]}_{polygon.wkt}'  # Using polygon's WKT as part of the item ID
@@ -352,7 +378,7 @@ items = list(collec.get_items(recursive=True))
 print(f"Total number of footprints: {len(items)}")
 # Save the STAC catalog to a file
 collec.normalize_hrefs(output_dir)
-collec.save(catalog_type=CatalogType.SELF_CONTAINED)
+collec.save(catalog_type=CatalogType.SELF_CONTAINED, stac_io=MyCustomStacIo())
 
 
 #for item in items:
