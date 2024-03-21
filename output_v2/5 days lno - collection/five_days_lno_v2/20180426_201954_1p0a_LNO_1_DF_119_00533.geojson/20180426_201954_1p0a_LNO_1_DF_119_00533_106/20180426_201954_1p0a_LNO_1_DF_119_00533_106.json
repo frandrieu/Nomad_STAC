@@ -1,0 +1,92 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "20180426_201954_1p0a_LNO_1_DF_119_00533_106",
+  "properties": {
+    "ssys:targets": [
+      "Mars"
+    ],
+    "processing:level": "Ancillary Data Record",
+    "proj:wkt2": "GEOGCRS[\"Mars (2015) - Sphere / Ocentric\",\n                    DATUM[\"Mars (2015) - Sphere\",\n                        ELLIPSOID[\"Mars (2015) - Sphere\", 3396190, 0,\n                    LENGTHUNIT[\"metre\", 1, ID[\"EPSG\", 9001]]],\n                    ANCHOR[\"Viking 1 lander : 47.95137 W\"]],\n                    PRIMEM[\"Reference Meridian\", 0,\n                    ANGLEUNIT[\"degree\", 0.0174532925199433, ID[\"EPSG\", 9122]]],\n            CS[ellipsoidal, 2],\n                AXIS[\"geodetic latitude (Lat)\", north,\n    ORDER[1],\n                    ANGLEUNIT[\"degree\", 0.0174532925199433]],\n                AXIS[\"geodetic longitude (Lon)\", east,\n    ORDER[2],\n                    ANGLEUNIT[\"degree\", 0.0174532925199433]],\n            ID[\"IAU\", 49900, 2015],\n            REMARK[\"Use semi-major radius as sphere radius for interoperability. Source of IAU Coordinate systems:\n    doi://10.1007/s10569-017-9805-5\"]]",
+    "eo:bands": [
+      {
+        "name": 119
+      }
+    ],
+    "datetime": "2018-04-26T20:30:11.121000Z"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          141.9552,
+          11.812
+        ],
+        [
+          142.2434,
+          11.8283
+        ],
+        [
+          142.243,
+          11.8362
+        ],
+        [
+          142.2233,
+          11.9246
+        ],
+        [
+          141.9346,
+          11.9086
+        ],
+        [
+          141.9351,
+          11.9008
+        ],
+        [
+          141.9552,
+          11.812
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../../catalog.json",
+      "type": "application/json",
+      "title": "ExoMars NOMAD/LNO footprints"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "five_days_lno_v2/20180426_201954_1p0a_LNO_1_DF_119_00533.geojson"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "five_days_lno_v2/20180426_201954_1p0a_LNO_1_DF_119_00533.geojson"
+    }
+  ],
+  "assets": {
+    "thumbnail": {
+      "href": "../Mars_Viking_global.jpg",
+      "type": "image/jpeg"
+    }
+  },
+  "bbox": [
+    -179.882,
+    -73.649,
+    179.9998,
+    73.6406
+  ],
+  "stac_extensions": [
+    "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/eo/v1.1.0/schema.json"
+  ],
+  "collection": "five_days_lno_v2/20180426_201954_1p0a_LNO_1_DF_119_00533.geojson"
+}

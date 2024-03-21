@@ -1,0 +1,94 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "20180421_183121_1p0a_LNO_1_DF_196_00533_160",
+  "properties": {
+    "start_datetime": "2018-04-21T18:41:43.016000Z",
+    "end_datetime": "2018-04-21T18:41:44.839000Z",
+    "ssys:targets": [
+      "Mars"
+    ],
+    "processing:level": "Ancillary Data Record",
+    "proj:wkt2": "GEOGCRS[\"Mars (2015) - Sphere / Ocentric\",\n                    DATUM[\"Mars (2015) - Sphere\",\n                        ELLIPSOID[\"Mars (2015) - Sphere\", 3396190, 0,\n                    LENGTHUNIT[\"metre\", 1, ID[\"EPSG\", 9001]]],\n                    ANCHOR[\"Viking 1 lander : 47.95137 W\"]],\n                    PRIMEM[\"Reference Meridian\", 0,\n                    ANGLEUNIT[\"degree\", 0.0174532925199433, ID[\"EPSG\", 9122]]],\n            CS[ellipsoidal, 2],\n                AXIS[\"geodetic latitude (Lat)\", north,\n    ORDER[1],\n                    ANGLEUNIT[\"degree\", 0.0174532925199433]],\n                AXIS[\"geodetic longitude (Lon)\", east,\n    ORDER[2],\n                    ANGLEUNIT[\"degree\", 0.0174532925199433]],\n            ID[\"IAU\", 49900, 2015],\n            REMARK[\"Use semi-major radius as sphere radius for interoperability. Source of IAU Coordinate systems:\n    doi://10.1007/s10569-017-9805-5\"]]",
+    "eo:bands": [
+      {
+        "name": 196
+      }
+    ],
+    "datetime": "2018-04-21T18:41:43.016000Z"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          144.7397,
+          -22.1429
+        ],
+        [
+          144.9265,
+          -21.9367
+        ],
+        [
+          144.9034,
+          -21.848
+        ],
+        [
+          144.8973,
+          -21.8432
+        ],
+        [
+          144.7101,
+          -22.049
+        ],
+        [
+          144.7335,
+          -22.1381
+        ],
+        [
+          144.7397,
+          -22.1429
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../collection.json",
+      "type": "application/json",
+      "title": "5 days lno - PySTAC prototype"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "five_days_lno_v2/20180421_183121_1p0a_LNO_1_DF_196_00533.geojson"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "five_days_lno_v2/20180421_183121_1p0a_LNO_1_DF_196_00533.geojson"
+    }
+  ],
+  "assets": {
+    "thumbnail": {
+      "href": "https://psa.esa.int/Mars_Viking_global.jpg",
+      "type": "image/jpeg"
+    }
+  },
+  "bbox": [
+    -179.9976,
+    -73.6291,
+    179.9861,
+    73.605
+  ],
+  "stac_extensions": [
+    "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/eo/v1.1.0/schema.json"
+  ],
+  "collection": "five_days_lno_v2/20180421_183121_1p0a_LNO_1_DF_196_00533.geojson"
+}

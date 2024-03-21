@@ -10,12 +10,38 @@ Script to convert a NOMAD footprint into a STAC catalog
 
 from pystac import Catalog, Item, Asset, MediaType, CatalogType, Collection, Extent, SpatialExtent, TemporalExtent, Provider, ProviderRole, Link
 from datetime import datetime
+import json
 from shapely.geometry import mapping
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.eo import EOExtension
 from pystac.extensions.eo import Band
 import os
+import numpy as np
 import geopandas as gpd
+from pystac.stac_io import DefaultStacIO
+from typing import Any
+  
+class MyCustomStacIo(DefaultStacIO):
+    
+    class NpJsonEncoder(json.JSONEncoder):
+        """Serializes numpy objects as json."""
+
+        def default(self, obj):
+            if isinstance(obj, np.integer):
+                return int(obj)
+            elif isinstance(obj, np.bool_):
+                return bool(obj)
+            elif isinstance(obj, np.floating):
+                if np.isnan(obj):
+                    return None  # Serialized as JSON null.
+                return float(obj)
+            elif isinstance(obj, np.ndarray):
+                return obj.tolist()
+            else:
+                return super().default(obj)  
+      
+    def json_dumps(self, json_dict: dict[str, Any], *args: Any, **kwargs: Any) -> str:
+        return super().json_dumps(json_dict, cls = self.NpJsonEncoder, *args, **kwargs)
 
 def create_stac_item(file_path, polygon, bbox, start_time_value, lid, item_id):
     # Create a STAC item for each polygon in the GeoJSON file
@@ -251,5 +277,5 @@ items = list(nomad_stac_catalog.get_items(recursive=True))
 print(f"Total number of footprints: {len(items)}")
 # Save the STAC catalog to a file
 nomad_stac_catalog.normalize_hrefs(output_dir)
-nomad_stac_catalog.save(catalog_type=CatalogType.SELF_CONTAINED)
+nomad_stac_catalog.save(catalog_type=CatalogType.SELF_CONTAINED, stac_io=MyCustomStacIo())
 
