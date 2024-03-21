@@ -24,7 +24,7 @@
     },
     {
       "rel": "child",
-      "href": "./geops_LNO-2018/catalog.json",
+      "href": "./geops_LNO_2018/catalog.json",
       "type": "application/json",
       "title": "ExoMars NOMAD/LNO footprints, year 2018"
     },

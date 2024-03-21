@@ -182,7 +182,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         
     }
     CATALOG_y2018 = Catalog(
-        id='geops_LNO-2018',
+        id='geops_LNO_2018',
         title='ExoMars NOMAD/LNO footprints, year 2018',
         description=(
             'Year 2018 Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) '

@@ -1,0 +1,87 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "geops_20180426_222748_1p0a_LNO_1_DP_167_00533_199",
+  "properties": {
+    "ssys:targets": [
+      "Mars"
+    ],
+    "processing:level": "Ancillary Data Record",
+    "proj:wkt2": "GEOGCRS[\"Mars (2015) - Sphere / Ocentric\",\n                    DATUM[\"Mars (2015) - Sphere\",\n                        ELLIPSOID[\"Mars (2015) - Sphere\", 3396190, 0,\n                    LENGTHUNIT[\"metre\", 1, ID[\"EPSG\", 9001]]],\n                    ANCHOR[\"Viking 1 lander : 47.95137 W\"]],\n                    PRIMEM[\"Reference Meridian\", 0,\n                    ANGLEUNIT[\"degree\", 0.0174532925199433, ID[\"EPSG\", 9122]]],\n            CS[ellipsoidal, 2],\n                AXIS[\"geodetic latitude (Lat)\", north,\n    ORDER[1],\n                    ANGLEUNIT[\"degree\", 0.0174532925199433]],\n                AXIS[\"geodetic longitude (Lon)\", east,\n    ORDER[2],\n                    ANGLEUNIT[\"degree\", 0.0174532925199433]],\n            ID[\"IAU\", 49900, 2015],\n            REMARK[\"Use semi-major radius as sphere radius for interoperability. Source of IAU Coordinate systems:\n    doi://10.1007/s10569-017-9805-5\"]]",
+    "eo:bands": [
+      {
+        "name": 167
+      }
+    ],
+    "datetime": "2018-04-26T22:37:57.909000Z"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -161.9276,
+          -73.6788
+        ],
+        [
+          -161.9141,
+          -73.6724
+        ],
+        [
+          -162.7222,
+          -73.5338
+        ],
+        [
+          -163.0465,
+          -73.5316
+        ],
+        [
+          -163.0604,
+          -73.5379
+        ],
+        [
+          -162.2547,
+          -73.6778
+        ],
+        [
+          -161.9276,
+          -73.6788
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../../../../catalog.json",
+      "type": "application/json",
+      "title": "G\u00e9osciences Paris-Saclay STAC catalogs"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "five_days_lno_v2/20180426_222748_1p0a_LNO_1_DP_167_00533.geojson"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "five_days_lno_v2/20180426_222748_1p0a_LNO_1_DP_167_00533.geojson"
+    }
+  ],
+  "assets": {},
+  "bbox": [
+    -178.5706,
+    -73.6788,
+    179.913,
+    58.5531
+  ],
+  "stac_extensions": [
+    "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/eo/v1.1.0/schema.json"
+  ],
+  "collection": "five_days_lno_v2/20180426_222748_1p0a_LNO_1_DP_167_00533.geojson"
+}
