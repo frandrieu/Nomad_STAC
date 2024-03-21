@@ -47,22 +47,26 @@ class MyCustomStacIo(DefaultStacIO):
     def json_dumps(self, json_dict: dict[str, Any], *args: Any, **kwargs: Any) -> str:
         return super().json_dumps(json_dict, cls = self.NpJsonEncoder, *args, **kwargs)
 
-def create_stac_item(file_path, polygon, bbox, start_time_value, lid, item_id):
+def create_stac_item(file_path, polygon, bbox, start_time_value, end_time_value, lid, item_id):
     # Create a STAC item for each polygon in the GeoJSON file
     #item_id = f'{os.path.splitext(os.path.basename(file_path))[0]}_{polygon.wkt}'  # Using polygon's WKT as part of the item ID
     #item = Item(id=item_id, geometry=polygon, bbox=bbox)
 
     # Convert start_time_value to ISO 8601 format using Python datetime library
     start_datetime_str = start_time_value.strftime('%Y-%m-%dT%H:%M:%S.%fZ') if start_time_value else None
+    end_datetime_str = end_time_value.strftime('%Y-%m-%dT%H:%M:%S.%fZ') if end_time_value else None
     #item.properties['start_datetime'] = start_datetime_str
     
    # Create a STAC item for each GeoJSON file
-    item_datetime = start_time_value
+    item_start_time = start_time_value
+    item_end_time = end_time_value
     item = Item(
         id=item_id,
         geometry=mapping(polygon),
         bbox=list(bbox),
-        datetime=item_datetime,
+        start_datetime=item_start_time,
+        end_datetime=item_end_time,
+        datetime=item_start_time,
         properties={},
         href=lid
     )
@@ -164,7 +168,7 @@ def get_geojson_info(file_path):
     # Extract end_time from GeoJSON file 
     end_time_str = gdf.iloc[0].get('utc_end_time', None)
     # Parse end_time string to datetime object
-    end_time_value = datetime.strptime(start_time_str, '%Y %b %d %H:%M:%S.%f') if end_time_str else None
+    end_time_value = datetime.strptime(end_time_str, '%Y %b %d %H:%M:%S.%f') if end_time_str else None
     # Extract polygons
     polygons = gdf.geometry.tolist()
     #extract diffraction order 
@@ -344,7 +348,7 @@ def add_items(folder_path, collec, output_dir):
         for idx, polygon in enumerate(polygons):
             item_id=f'{os.path.splitext(os.path.basename(file_path))[0]}_{idx}'
             # Create a STAC item for each polygon
-            item = create_stac_item(file_path, polygon, bbox, start_time_value, psa_id, item_id)
+            item = create_stac_item(file_path, polygon, bbox, start_time_value, end_time_value, psa_id, item_id)
             
             thumbnail_path = "Mars_Viking_global.jpg"
             item.add_asset(
