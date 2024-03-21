@@ -1,6 +1,6 @@
 {
   "type": "Catalog",
-  "id": "geops",
+  "id": "geops_catalog_of_catalogs",
   "stac_version": "1.0.0",
   "description": "Catalog of G\u00e9osciences Paris-Saclay STAC catalogs (https://www.geops.universite-paris-saclay.fr) ",
   "links": [
@@ -24,7 +24,7 @@
     },
     {
       "rel": "child",
-      "href": "./nomad-lno/catalog.json",
+      "href": "./geops_nomad_lno_catalog/catalog.json",
       "type": "application/json",
       "title": "ExoMars NOMAD/LNO footprints"
     }

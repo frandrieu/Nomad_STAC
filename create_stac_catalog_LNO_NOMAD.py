@@ -114,7 +114,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
    
     # Example collection creation
     nomad_collection = Collection(
-        id="10 days lno - collection",
+        id="geops_10_days_lno_collection",
         title="10 days lno - PySTAC prototype",
         description="Collection of 10 days of NOMAD data to make a STAC prototype",
         license="CC-BY-SA",
@@ -182,7 +182,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         
     }
     CATALOG_y2018 = Catalog(
-        id='LNO-2018',
+        id='geops_LNO-2018',
         title='ExoMars NOMAD/LNO footprints, year 2018',
         description=(
             'Year 2018 Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) '
@@ -218,7 +218,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
     CATALOG_y2018.add_child(nomad_collection)
     
     CATALOG = Catalog(
-        id='nomad-lno',
+        id='geops_nomad_lno_catalog',
         title='ExoMars NOMAD/LNO footprints',
         description=(
             'Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) '
@@ -255,7 +255,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
     
 
     CATALOG_geops = Catalog(
-        id='geops',
+        id='geops_catalog_of_catalogs',
         title='Géosciences Paris-Saclay STAC catalogs',
         description=(
             'Catalog of Géosciences Paris-Saclay STAC catalogs (https://www.geops.universite-paris-saclay.fr) '
@@ -318,6 +318,7 @@ def add_items(folder_path, collec, output_dir):
         
         for idx, polygon in enumerate(polygons):
             item_id=f'{os.path.splitext(os.path.basename(file_path))[0]}_{idx}'
+            item_id='geops_'+item_id
             # Create a STAC item for each polygon
             item = create_stac_item(file_path, polygon, bbox, start_time_value, psa_id, item_id)
             #add an asset
@@ -340,7 +341,7 @@ def add_items(folder_path, collec, output_dir):
 folder_path = 'five_days_lno_v2'
 output_dir='output_v2/'
 nomad_stac_catalog = create_stac_collection(folder_path)
-collec=nomad_stac_catalog.get_child('10 days lno - collection', recursive=True)
+collec=nomad_stac_catalog.get_child('geops_10_days_lno_collection', recursive=True)
 add_items(folder_path, collec, output_dir)
 
 ncol=len(list(collec.get_all_collections()))
