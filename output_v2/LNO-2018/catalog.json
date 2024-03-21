@@ -24,9 +24,9 @@
     },
     {
       "rel": "child",
-      "href": "./nomad-lno/catalog.json",
+      "href": "./10 days lno - collection/collection.json",
       "type": "application/json",
-      "title": "ExoMars NOMAD/LNO footprints"
+      "title": "10 days lno - PySTAC prototype"
     },
     {
       "rel": "parent",
