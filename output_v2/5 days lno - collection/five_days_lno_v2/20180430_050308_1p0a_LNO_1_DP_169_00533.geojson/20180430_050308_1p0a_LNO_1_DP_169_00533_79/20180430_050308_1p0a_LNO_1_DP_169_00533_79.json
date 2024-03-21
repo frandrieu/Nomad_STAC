@@ -66,12 +66,7 @@
       "title": "five_days_lno_v2/20180430_050308_1p0a_LNO_1_DP_169_00533.geojson"
     }
   ],
-  "assets": {
-    "thumbnail": {
-      "href": "../Mars_Viking_global.jpg",
-      "type": "image/jpeg"
-    }
-  },
+  "assets": {},
   "bbox": [
     18.5753,
     -65.3502,
