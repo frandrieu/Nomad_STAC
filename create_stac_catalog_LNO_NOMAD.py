@@ -114,9 +114,9 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
    
     # Example collection creation
     nomad_collection = Collection(
-        id="5 days lno - collection",
-        title="5 days lno - PySTAC prototype",
-        description="Collection of 5 days of NOMAD data to make a STAC prototype",
+        id="10 days lno - collection",
+        title="10 days lno - PySTAC prototype",
+        description="Collection of 10 days of NOMAD data to make a STAC prototype",
         license="CC-BY-SA",
         catalog_type=CatalogType.SELF_CONTAINED,
         extent=Extent(
@@ -218,8 +218,80 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
     
     CATALOG.add_child(nomad_collection)
     
+    CATALOG_y2018 = Catalog(
+        id='LNO-2018',
+        title='ExoMars NOMAD/LNO footprints, year 2018',
+        description=(
+            'Year 2018 Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) '
+        ),
+        stac_extensions=EXTENSIONS,
+        extra_fields={
+            'license': LICENSE,
+            'acknowledgment': ACKNOWLEDGMENT,
+            'mission': MISSION,
+            'instruments': INSTRUMENTS,
+            'ssys:targets': "Mars",
+            'sci:publications': PUBLICATIONS,
+        }
+    )
     
-    return CATALOG
+    CATALOG_y2018.add_links([
+        Link(
+            rel='copyright',
+            target='https://www.geops.universite-paris-saclay.fr',
+            media_type=MediaType.HTML,
+            title='GEOPS - Université Paris-Saclay',
+        ),
+        Link(
+            rel='sponsor',
+            target='https://pdssp.ias.universite-paris-saclay.fr',
+            media_type=MediaType.HTML,
+            title='Catalogue du Pôle de données et services Surfaces Planétaires (PDSSP)',
+        ),
+            
+    ])
+    
+    
+    CATALOG_y2018.add_child(CATALOG)
+    
+    CATALOG_geops = Catalog(
+        id='geops',
+        title='Géosciences Paris-Saclay STAC catalogs',
+        description=(
+            'Catalog of Géosciences Paris-Saclay STAC catalogs (https://www.geops.universite-paris-saclay.fr) '
+        ),
+        stac_extensions=EXTENSIONS,
+        extra_fields={
+            'license': LICENSE,
+            'acknowledgment': ACKNOWLEDGMENT,
+            'mission': MISSION,
+            'instruments': INSTRUMENTS,
+            'ssys:targets': "Mars",
+            'sci:publications': PUBLICATIONS,
+        }
+    )
+    
+    CATALOG_geops.add_links([
+        Link(
+            rel='copyright',
+            target='https://www.geops.universite-paris-saclay.fr',
+            media_type=MediaType.HTML,
+            title='GEOPS - Université Paris-Saclay',
+        ),
+        Link(
+            rel='sponsor',
+            target='https://pdssp.ias.universite-paris-saclay.fr',
+            media_type=MediaType.HTML,
+            title='Catalogue du Pôle de données et services Surfaces Planétaires (PDSSP)',
+        ),
+            
+    ])
+    
+    
+    CATALOG_geops.add_child(CATALOG_y2018)
+    
+    
+    return CATALOG_geops
 
 
 def add_items(folder_path, collec, output_dir):
@@ -268,7 +340,7 @@ def add_items(folder_path, collec, output_dir):
 folder_path = 'five_days_lno_v2'
 output_dir='output_v2/'
 nomad_stac_catalog = create_stac_collection(folder_path)
-collec=nomad_stac_catalog.get_child('5 days lno - collection')
+collec=nomad_stac_catalog.get_child('10 days lno - collection', recursive=True)
 add_items(folder_path, collec, output_dir)
 
 ncol=len(list(collec.get_all_collections()))
