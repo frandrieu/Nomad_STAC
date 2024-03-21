@@ -2,7 +2,7 @@
   "type": "Catalog",
   "id": "geops_nomad_lno_catalog",
   "stac_version": "1.0.0",
-  "description": "G\u00e9osciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) \n![ICON](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/main/nomad.jpg)",
+  "description": "G\u00e9osciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) \n![ICON](https://cdn.sci.esa.int/documents/33431/35217/1567215345347-ExoMars_TGO_NOMAD_FS_625.jpg)",
   "links": [
     {
       "rel": "root",
@@ -24,7 +24,7 @@
     },
     {
       "rel": "icon",
-      "href": "https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/main/nomad.jpg",
+      "href": "https://cdn.sci.esa.int/documents/33431/35217/1567215345347-ExoMars_TGO_NOMAD_FS_625.jpg",
       "type": "image/jpeg",
       "title": "NOMAD instrument (credit photo ESA)"
     },

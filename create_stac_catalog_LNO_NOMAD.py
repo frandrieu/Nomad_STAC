@@ -230,7 +230,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         title='ExoMars NOMAD/LNO footprints',
         description=(
             'Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) \n'
-        '![ICON](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/main/nomad.jpg)'
+        '![ICON](https://cdn.sci.esa.int/documents/33431/35217/1567215345347-ExoMars_TGO_NOMAD_FS_625.jpg)'
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
@@ -258,7 +258,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         ),
         Link(
             rel='icon',
-            target='https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/main/nomad.jpg',
+            target='https://cdn.sci.esa.int/documents/33431/35217/1567215345347-ExoMars_TGO_NOMAD_FS_625.jpg',
             media_type=MediaType.JPEG,
             title='NOMAD instrument (credit photo ESA)',
         ),  
@@ -275,7 +275,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         title='Géosciences Paris-Saclay STAC catalogs',
         description=(
             'Catalog of Géosciences Paris-Saclay STAC catalogs (https://www.geops.universite-paris-saclay.fr) \n'
-        '![ICON](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/main/LOGO_GEOPS.jpg'
+        '![ICON](https://www.geops.universite-paris-saclay.fr/wp-content/uploads/2023/04/logo-geops-cnrs-small.jpg'
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
@@ -303,7 +303,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         ),
         Link(
             rel='icon',
-            target='https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/main/LOGO_GEOPS.jpg',
+            target='https://www.geops.universite-paris-saclay.fr/wp-content/uploads/2023/04/logo-geops-cnrs-small.jpg',
             media_type=MediaType.JPEG,
             title='GEOPS logo',
         ),  
