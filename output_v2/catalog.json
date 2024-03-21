@@ -23,6 +23,12 @@
       "title": "Catalogue du P\u00f4le de donn\u00e9es et services Surfaces Plan\u00e9taires (PDSSP)"
     },
     {
+      "rel": "icon",
+      "href": "LOGO_GEOPS.jpg",
+      "type": "image/jpeg",
+      "title": "GEOPS logo"
+    },
+    {
       "rel": "child",
       "href": "./geops_nomad_lno_catalog/catalog.json",
       "type": "application/json",

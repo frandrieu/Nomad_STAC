@@ -211,6 +211,13 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             media_type=MediaType.HTML,
             title='Catalogue du Pôle de données et services Surfaces Planétaires (PDSSP)',
         ),
+        Link(
+            rel='icon',
+            target='nomad.jpg',
+            media_type=MediaType.JPEG,
+            title='NOMAD instrument (credit photo ESA)',
+        ),  
+          
             
     ])
     
@@ -247,6 +254,13 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             media_type=MediaType.HTML,
             title='Catalogue du Pôle de données et services Surfaces Planétaires (PDSSP)',
         ),
+        Link(
+            rel='icon',
+            target='nomad.jpg',
+            media_type=MediaType.JPEG,
+            title='NOMAD instrument (credit photo ESA)',
+        ),  
+            
             
     ])
     
@@ -284,6 +298,12 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             media_type=MediaType.HTML,
             title='Catalogue du Pôle de données et services Surfaces Planétaires (PDSSP)',
         ),
+        Link(
+            rel='icon',
+            target='LOGO_GEOPS.jpg',
+            media_type=MediaType.JPEG,
+            title='GEOPS logo',
+        ),  
             
     ])
     
