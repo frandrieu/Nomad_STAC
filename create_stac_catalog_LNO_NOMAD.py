@@ -186,7 +186,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         title='ExoMars NOMAD/LNO footprints, year 2018',
         description=(
             'Year 2018 Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) \n'
-        '![ICON](nomad.jpg)'
+        '![ICON](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/nomad.jpg)'
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
@@ -214,7 +214,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         ),
         Link(
             rel='icon',
-            target='nomad.jpg',
+            target='https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/nomad.jpg',
             media_type=MediaType.JPEG,
             title='NOMAD instrument (credit photo ESA)',
         ),  
@@ -230,7 +230,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         title='ExoMars NOMAD/LNO footprints',
         description=(
             'Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) \n'
-        '![ICON](nomad.jpg)'
+        '![ICON](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/nomad.jpg)'
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
@@ -258,7 +258,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         ),
         Link(
             rel='icon',
-            target='nomad.jpg',
+            target='https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/nomad.jpg',
             media_type=MediaType.JPEG,
             title='NOMAD instrument (credit photo ESA)',
         ),  
@@ -275,7 +275,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         title='Géosciences Paris-Saclay STAC catalogs',
         description=(
             'Catalog of Géosciences Paris-Saclay STAC catalogs (https://www.geops.universite-paris-saclay.fr) \n'
-        '![ICON](LOGO_GEOPS.jpg)'
+        '![ICON](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/LOGO_GEOPS.jpg)'
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
@@ -303,7 +303,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         ),
         Link(
             rel='icon',
-            target='LOGO_GEOPS.jpg',
+            target='https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/LOGO_GEOPS.jpg',
             media_type=MediaType.JPEG,
             title='GEOPS logo',
         ),  
