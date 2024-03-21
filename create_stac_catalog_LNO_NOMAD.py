@@ -288,7 +288,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
     ])
     
     
-    CATALOG_geops.add_child(CATALOG_y2018)
+    CATALOG_geops.add_child(CATALOG)
     
     
     return CATALOG_geops

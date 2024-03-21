@@ -24,9 +24,9 @@
     },
     {
       "rel": "child",
-      "href": "./LNO-2018/catalog.json",
+      "href": "./nomad-lno/catalog.json",
       "type": "application/json",
-      "title": "ExoMars NOMAD/LNO footprints, year 2018"
+      "title": "ExoMars NOMAD/LNO footprints"
     }
   ],
   "stac_extensions": [
