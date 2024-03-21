@@ -181,6 +181,41 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         'processing:level': 'Ancillary Data Record',
         
     }
+    CATALOG_y2018 = Catalog(
+        id='LNO-2018',
+        title='ExoMars NOMAD/LNO footprints, year 2018',
+        description=(
+            'Year 2018 Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) '
+        ),
+        stac_extensions=EXTENSIONS,
+        extra_fields={
+            'license': LICENSE,
+            'acknowledgment': ACKNOWLEDGMENT,
+            'mission': MISSION,
+            'instruments': INSTRUMENTS,
+            'ssys:targets': "Mars",
+            'sci:publications': PUBLICATIONS,
+        }
+    )
+    
+    CATALOG_y2018.add_links([
+        Link(
+            rel='copyright',
+            target='https://www.geops.universite-paris-saclay.fr',
+            media_type=MediaType.HTML,
+            title='GEOPS - Université Paris-Saclay',
+        ),
+        Link(
+            rel='sponsor',
+            target='https://pdssp.ias.universite-paris-saclay.fr',
+            media_type=MediaType.HTML,
+            title='Catalogue du Pôle de données et services Surfaces Planétaires (PDSSP)',
+        ),
+            
+    ])
+    
+    
+    CATALOG_y2018.add_child(nomad_collection)
     
     CATALOG = Catalog(
         id='nomad-lno',
@@ -216,44 +251,9 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
     ])
     
     
-    CATALOG.add_child(nomad_collection)
+    CATALOG.add_child(CATALOG_y2018)
     
-    CATALOG_y2018 = Catalog(
-        id='LNO-2018',
-        title='ExoMars NOMAD/LNO footprints, year 2018',
-        description=(
-            'Year 2018 Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) '
-        ),
-        stac_extensions=EXTENSIONS,
-        extra_fields={
-            'license': LICENSE,
-            'acknowledgment': ACKNOWLEDGMENT,
-            'mission': MISSION,
-            'instruments': INSTRUMENTS,
-            'ssys:targets': "Mars",
-            'sci:publications': PUBLICATIONS,
-        }
-    )
-    
-    CATALOG_y2018.add_links([
-        Link(
-            rel='copyright',
-            target='https://www.geops.universite-paris-saclay.fr',
-            media_type=MediaType.HTML,
-            title='GEOPS - Université Paris-Saclay',
-        ),
-        Link(
-            rel='sponsor',
-            target='https://pdssp.ias.universite-paris-saclay.fr',
-            media_type=MediaType.HTML,
-            title='Catalogue du Pôle de données et services Surfaces Planétaires (PDSSP)',
-        ),
-            
-    ])
-    
-    
-    CATALOG_y2018.add_child(CATALOG)
-    
+
     CATALOG_geops = Catalog(
         id='geops',
         title='Géosciences Paris-Saclay STAC catalogs',
