@@ -185,7 +185,8 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         id='geops_LNO_2018',
         title='ExoMars NOMAD/LNO footprints, year 2018',
         description=(
-            'Year 2018 Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) '
+            'Year 2018 Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) \n'
+        '![ICON](nomad.jpg)'
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
@@ -228,7 +229,8 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         id='geops_nomad_lno_catalog',
         title='ExoMars NOMAD/LNO footprints',
         description=(
-            'Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) '
+            'Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) \n'
+        '![ICON](nomad.jpg)'
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
@@ -272,7 +274,8 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         id='geops_catalog_of_catalogs',
         title='Géosciences Paris-Saclay STAC catalogs',
         description=(
-            'Catalog of Géosciences Paris-Saclay STAC catalogs (https://www.geops.universite-paris-saclay.fr) '
+            'Catalog of Géosciences Paris-Saclay STAC catalogs (https://www.geops.universite-paris-saclay.fr) \n'
+        '![ICON](LOGO_GEOPS.jpg)'
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={

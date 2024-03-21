@@ -2,7 +2,7 @@
   "type": "Catalog",
   "id": "geops_catalog_of_catalogs",
   "stac_version": "1.0.0",
-  "description": "Catalog of G\u00e9osciences Paris-Saclay STAC catalogs (https://www.geops.universite-paris-saclay.fr) ",
+  "description": "Catalog of G\u00e9osciences Paris-Saclay STAC catalogs (https://www.geops.universite-paris-saclay.fr) \n![ICON](LOGO_GEOPS.jpg)",
   "links": [
     {
       "rel": "root",

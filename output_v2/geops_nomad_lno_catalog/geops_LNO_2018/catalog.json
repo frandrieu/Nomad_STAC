@@ -2,7 +2,7 @@
   "type": "Catalog",
   "id": "geops_LNO_2018",
   "stac_version": "1.0.0",
-  "description": "Year 2018 G\u00e9osciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) ",
+  "description": "Year 2018 G\u00e9osciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) \n![ICON](nomad.jpg)",
   "links": [
     {
       "rel": "root",
