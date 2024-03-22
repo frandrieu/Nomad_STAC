@@ -1,0 +1,87 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "geops_20180423_155230_1p0a_LNO_1_DP_168_00533_208",
+  "properties": {
+    "ssys:targets": [
+      "Mars"
+    ],
+    "processing:level": "Ancillary Data Record",
+    "proj:wkt2": "GEOGCS[\"GCS_Mars_2000\",\n        DATUM[\"D_Mars_2000\",\n            SPHEROID[\"Mars_2000_IAU_IAG\",3396190,169.894447223612,\n                AUTHORITY[\"ESRI\",\"107905\"]],\n            AUTHORITY[\"ESRI\",\"106905\"]],\n        PRIMEM[\"Reference_Meridian\",0,\n            AUTHORITY[\"ESRI\",\"108900\"]],\n        UNIT[\"degree\",0.0174532925199433,\n            AUTHORITY[\"EPSG\",\"9122\"]],\n        AUTHORITY[\"ESRI\",\"104905\"]]",
+    "eo:bands": [
+      {
+        "name": 168
+      }
+    ],
+    "datetime": "2018-04-23T16:02:39.956000Z"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -75.5759,
+          -73.3708
+        ],
+        [
+          -74.6538,
+          -73.4265
+        ],
+        [
+          -73.9155,
+          -73.393
+        ],
+        [
+          -73.9106,
+          -73.3856
+        ],
+        [
+          -74.8319,
+          -73.3333
+        ],
+        [
+          -75.5703,
+          -73.3635
+        ],
+        [
+          -75.5759,
+          -73.3708
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../../../../catalog.json",
+      "type": "application/json",
+      "title": "G\u00e9osciences Paris-Saclay STAC catalogs"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "ten_days_lno/20180423_155230_1p0a_LNO_1_DP_168_00533.geojson"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "ten_days_lno/20180423_155230_1p0a_LNO_1_DP_168_00533.geojson"
+    }
+  ],
+  "assets": {},
+  "bbox": [
+    -179.9992,
+    -73.6103,
+    179.9982,
+    61.8439
+  ],
+  "stac_extensions": [
+    "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/eo/v1.1.0/schema.json"
+  ],
+  "collection": "ten_days_lno/20180423_155230_1p0a_LNO_1_DP_168_00533.geojson"
+}

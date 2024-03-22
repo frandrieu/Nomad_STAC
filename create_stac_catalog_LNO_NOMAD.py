@@ -354,8 +354,8 @@ def add_items(folder_path, collec, output_dir):
             collection1.add_item(item)
 
 
-folder_path = 'five_days_lno_v2'
-output_dir='output_v2/'
+folder_path = 'ten_days_lno'
+output_dir='Prototype_STAC_catalogue/'
 nomad_stac_catalog = create_stac_collection(folder_path)
 collec=nomad_stac_catalog.get_child('geops_10_days_lno_collection', recursive=True)
 add_items(folder_path, collec, output_dir)
