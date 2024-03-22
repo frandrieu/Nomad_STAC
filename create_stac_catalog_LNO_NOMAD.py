@@ -63,23 +63,16 @@ def create_stac_item(file_path, polygon, bbox, start_time_value, lid, item_id):
     item.properties['processing:level']='Ancillary Data Record'
     
     item_projection = ProjectionExtension.ext(item, add_if_missing=True)
-    item_projection.wkt2 = """GEOGCRS["Mars (2015) - Sphere / Ocentric",
-                    DATUM["Mars (2015) - Sphere",
-                        ELLIPSOID["Mars (2015) - Sphere", 3396190, 0,
-                    LENGTHUNIT["metre", 1, ID["EPSG", 9001]]],
-                    ANCHOR["Viking 1 lander : 47.95137 W"]],
-                    PRIMEM["Reference Meridian", 0,
-                    ANGLEUNIT["degree", 0.0174532925199433, ID["EPSG", 9122]]],
-            CS[ellipsoidal, 2],
-                AXIS["geodetic latitude (Lat)", north,
-    ORDER[1],
-                    ANGLEUNIT["degree", 0.0174532925199433]],
-                AXIS["geodetic longitude (Lon)", east,
-    ORDER[2],
-                    ANGLEUNIT["degree", 0.0174532925199433]],
-            ID["IAU", 49900, 2015],
-            REMARK["Use semi-major radius as sphere radius for interoperability. Source of IAU Coordinate systems:
-    doi://10.1007/s10569-017-9805-5"]]"""
+    item_projection.wkt2 = """GEOGCS["GCS_Mars_2000",
+        DATUM["D_Mars_2000",
+            SPHEROID["Mars_2000_IAU_IAG",3396190,169.894447223612,
+                AUTHORITY["ESRI","107905"]],
+            AUTHORITY["ESRI","106905"]],
+        PRIMEM["Reference_Meridian",0,
+            AUTHORITY["ESRI","108900"]],
+        UNIT["degree",0.0174532925199433,
+            AUTHORITY["EPSG","9122"]],
+        AUTHORITY["ESRI","104905"]]"""
 
     return item
 
@@ -345,7 +338,7 @@ def add_items(folder_path, collec, output_dir):
             # Create a STAC item for each polygon
             item = create_stac_item(file_path, polygon, bbox, start_time_value, psa_id, item_id)
             #add an asset
-            thumbnail_path = "Mars_Viking_global.jpg"
+            #thumbnail_path = "Mars_Viking_global.jpg"
             '''
             item.add_asset(
                 "thumbnail",
