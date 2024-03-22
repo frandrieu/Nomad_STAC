@@ -374,7 +374,7 @@ def add_items(folder_path, collec, output_dir):
                 "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
         ]
         
-        PROCESSING = 'L4'
+        PROCESSING = 'L1'
 
         
         # Définir la collection 1
