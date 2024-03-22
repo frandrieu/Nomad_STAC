@@ -115,7 +115,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         extent=Extent(
             spatial=SpatialExtent([-180, -90, 180, 90]),
             temporal=TemporalExtent([
-                (datetime(2020, 1, 1), datetime(2024, 12, 31))
+                (datetime(2018, 4, 21), datetime(2018, 4, 30))
             ])
         )
     )
@@ -169,6 +169,17 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
             "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
     ]
+    
+    stac_extensions=EXTENSIONS,
+    extra_fields={
+        'license': LICENSE,
+        'acknowledgment': ACKNOWLEDGMENT,
+        'mission': MISSION,
+        'instruments': INSTRUMENTS,
+        'ssys:targets': "Mars",
+        'sci:publications': PUBLICATIONS,
+        }
+    
     
     PROCESSING = {
         'processing:level': 'Ancillary Data Record',
