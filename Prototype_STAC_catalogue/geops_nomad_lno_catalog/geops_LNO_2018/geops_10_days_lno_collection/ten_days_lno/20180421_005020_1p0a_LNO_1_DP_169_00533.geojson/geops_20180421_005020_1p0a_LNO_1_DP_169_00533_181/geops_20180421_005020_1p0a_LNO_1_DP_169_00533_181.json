@@ -74,7 +74,7 @@
     "Link to the data": {
       "href": "ten_days_lno/20180421_005020_1p0a_LNO_1_DP_169_00533.geojson",
       "type": "text/plain",
-      "title": "Link to the data",
+      "title": "[Link to the data]( https://psa.esa.int/psa/#/pages/search?p=urn:esa:psa:em16_tgo_nmd:data_calibrated:nmd_cal_sc_lno_20180421t005020-20180421t015554-d-169)",
       "description": "External link: [ten_days_lno/20180421_005020_1p0a_LNO_1_DP_169_00533.geojson]( https://psa.esa.int/psa/#/pages/search?p=urn:esa:psa:em16_tgo_nmd:data_calibrated:nmd_cal_sc_lno_20180421t005020-20180421t015554-d-169)",
       "roles": [
         "url"

@@ -412,7 +412,7 @@ def add_items(folder_path, collec, output_dir):
             # Create a STAC item for each polygon
             item = create_stac_item(file_path, polygon, bbox, start_time_value, psa_id, item_id)
             #add an 
-            asset=Asset(title="Link to the data",
+            asset=Asset(title="[Link to the data]("+psa_id+")",
                         href=file_path,
                         description='External link: ['+file_path+']('+psa_id+')',
                         media_type=MediaType.TEXT,
