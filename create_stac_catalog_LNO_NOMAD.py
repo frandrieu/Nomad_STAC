@@ -107,7 +107,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
   
     #### Catalog metadata
         
-    LICENSE = 'CC-BY-4.0'
+    LICENCE = 'CC-BY-4.0'
     ACKNOWLEDGMENT = 'ESA/BIRA-IASB/Université Paris-Saclay - GEOPS'
     MISSION = 'ExoMars'
     INSTRUMENTS = 'NOMAD/LNO'
@@ -152,17 +152,6 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
     ]
     
-    stac_extensions=EXTENSIONS,
-    extra_fields={
-        'license': LICENSE,
-        'acknowledgment': ACKNOWLEDGMENT,
-        'mission': MISSION,
-        'instruments': INSTRUMENTS,
-        'ssys:targets': "Mars",
-        'sci:publications': PUBLICATIONS,
-        }
-    
-    
     PROCESSING = 'L4'
         
     
@@ -185,7 +174,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         stac_extensions=EXTENSIONS,
         providers=PROVIDERS,
         extra_fields={
-            'license': LICENSE,
+            'license': LICENCE,
             'acknowledgment': ACKNOWLEDGMENT,
             'mission': MISSION,
             'instruments': INSTRUMENTS,
@@ -206,7 +195,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
-            'license': LICENSE,
+            'license': LICENCE,
             'acknowledgment': ACKNOWLEDGMENT,
             'mission': MISSION,
             'instruments': INSTRUMENTS,
@@ -250,7 +239,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
-            'license': LICENSE,
+            'license': LICENCE,
             'acknowledgment': ACKNOWLEDGMENT,
             'mission': MISSION,
             'instruments': INSTRUMENTS,
@@ -295,7 +284,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
-            'license': LICENSE,
+            'license': LICENCE,
             'acknowledgment': ACKNOWLEDGMENT,
             'mission': MISSION,
             'instruments': INSTRUMENTS,
@@ -384,17 +373,6 @@ def add_items(folder_path, collec, output_dir):
                 "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
                 "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
         ]
-        
-        stac_extensions=EXTENSIONS,
-        extra_fields={
-            'license': LICENSE,
-            'acknowledgment': ACKNOWLEDGMENT,
-            'mission': MISSION,
-            'instruments': INSTRUMENTS,
-            'ssys:targets': "Mars",
-            'sci:publications': PUBLICATIONS,
-            }
-        
         
         PROCESSING = 'L4'
 
