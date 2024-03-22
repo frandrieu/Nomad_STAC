@@ -972,6 +972,21 @@
       "title": "10 days lno - PySTAC prototype"
     }
   ],
+  "stac_extensions": [
+    "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
+    "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
+  ],
+  "license": "proprietary",
+  "acknowledgment": "ESA/BIRA-IASB/Universit\u00e9 Paris-Saclay - GEOPS",
+  "mission": "ExoMars",
+  "instruments": "NOMAD/LNO",
+  "platform": "LNO",
+  "ssys:targets": "Mars",
+  "sci:publications": [
+    "Thomas et al. (2016) Optical and radiometric models of the NOMAD instrument part II: the infrared channels-SO and LNO. Optics Express, 24(4), 3790-3805. 10.1364/OE.24.003790",
+    "Cruz-Mermy et al. (2022) Calibration of NOMAD on ExoMars Trace Gas Orbiter: Part 3-LNO validation and instrument stability. Planetary and Space Science, 218, 105399. 10.1016/j.pss.2021.105399"
+  ],
+  "processing level": "L4",
   "title": "ten_days_lno/20180421_064402_1p0a_LNO_1_DP_168_00533.geojson",
   "extent": {
     "spatial": {
@@ -993,5 +1008,29 @@
       ]
     }
   },
-  "license": "proprietary"
+  "providers": [
+    {
+      "name": "G\u00e9osciences Paris-Saclay",
+      "roles": [
+        "licensor",
+        "processor"
+      ],
+      "url": "https://www.geops.universite-paris-saclay.fr"
+    },
+    {
+      "name": "European Space Agency",
+      "roles": [
+        "producer"
+      ],
+      "url": "https://www.esa.int"
+    },
+    {
+      "name": "Belgian Institute for Space Aeronomy",
+      "roles": [
+        "producer",
+        "host"
+      ],
+      "url": "https://www.aeronomie.be"
+    }
+  ]
 }

@@ -340,7 +340,64 @@ def add_items(folder_path, collec, output_dir):
     for file_name in files:
         file_path = os.path.join(folder_path, file_name)
         polygons, bbox, start_time_value, end_time_value, psa_id, order = get_geojson_info(file_path)
+        LICENSE = 'CC-BY-4.0'
+        ACKNOWLEDGMENT = 'ESA/BIRA-IASB/Université Paris-Saclay - GEOPS'
+        MISSION = 'ExoMars'
+        INSTRUMENTS = 'NOMAD/LNO'
         
+        PUBLICATIONS = [
+            
+                'Thomas et al. (2016) Optical and radiometric models of the NOMAD instrument part II: the infrared channels-SO and LNO. Optics Express, 24(4), 3790-3805. 10.1364/OE.24.003790',
+            
+           
+                'Cruz-Mermy et al. (2022) Calibration of NOMAD on ExoMars Trace Gas Orbiter: Part 3-LNO validation and instrument stability. Planetary and Space Science, 218, 105399. 10.1016/j.pss.2021.105399',
+            
+        ]
+        
+        PROVIDERS = [
+            Provider(
+                name='Géosciences Paris-Saclay',
+                roles=[
+                    ProviderRole.LICENSOR,
+                    ProviderRole.PROCESSOR,
+                ],
+                url='https://www.geops.universite-paris-saclay.fr',
+            ),
+            Provider(
+                name='European Space Agency',
+                roles=[
+                    ProviderRole.PRODUCER,
+                ],
+                url='https://www.esa.int',
+            ),
+            Provider(
+                name='Belgian Institute for Space Aeronomy',
+                roles=[
+                    ProviderRole.PRODUCER,
+                    ProviderRole.HOST,
+                ],
+                url='https://www.aeronomie.be',
+            ),
+        ]
+        
+        EXTENSIONS =[
+                "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
+                "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
+        ]
+        
+        stac_extensions=EXTENSIONS,
+        extra_fields={
+            'license': LICENSE,
+            'acknowledgment': ACKNOWLEDGMENT,
+            'mission': MISSION,
+            'instruments': INSTRUMENTS,
+            'ssys:targets': "Mars",
+            'sci:publications': PUBLICATIONS,
+            }
+        
+        
+        PROCESSING = 'L4'
+
         
         # Définir la collection 1
         collection1 = Collection(
@@ -351,7 +408,18 @@ def add_items(folder_path, collec, output_dir):
                 spatial=SpatialExtent(list(bbox)),
                 temporal=TemporalExtent([start_time_value, end_time_value])
             ),
-            license="proprietary"
+            stac_extensions=EXTENSIONS,
+            providers=PROVIDERS,
+            extra_fields={
+                'license': LICENSE,
+                'acknowledgment': ACKNOWLEDGMENT,
+                'mission': MISSION,
+                'instruments': INSTRUMENTS,
+                'platform': "LNO",
+                'ssys:targets': "Mars",
+                'sci:publications': PUBLICATIONS,
+                'processing level': PROCESSING,
+            }
         )
         collec.add_child(collection1)
         
