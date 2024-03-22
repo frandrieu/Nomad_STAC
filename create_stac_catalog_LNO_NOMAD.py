@@ -104,31 +104,13 @@ def get_geojson_info(file_path):
 def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
    # Create a STAC catalog
    
-   
-    # Example collection creation
-    nomad_collection = Collection(
-        id="geops_10_days_lno_collection",
-        title="10 days lno - PySTAC prototype",
-        description="Collection of 10 days of NOMAD data to make a STAC prototype",
-        license="CC-BY-SA",
-        catalog_type=CatalogType.SELF_CONTAINED,
-        extent=Extent(
-            spatial=SpatialExtent([-180, -90, 180, 90]),
-            temporal=TemporalExtent([
-                (datetime(2018, 4, 21), datetime(2018, 4, 30))
-            ])
-        )
-    )
-    nomad_collection.extra_fields['mission'] = "ExoMars"
-    nomad_collection.extra_fields['platform'] = "LNO"
-    nomad_collection.extra_fields['instruments'] = ["NOMAD"]
-    
+  
     #### Catalog metadata
         
     LICENSE = 'CC-BY-4.0'
     ACKNOWLEDGMENT = 'ESA/BIRA-IASB/Université Paris-Saclay - GEOPS'
     MISSION = 'ExoMars'
-    INSTRUMENTS = ['NOMAD/LNO']
+    INSTRUMENTS = 'NOMAD/LNO'
     
     PUBLICATIONS = [
         
@@ -181,10 +163,40 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         }
     
     
-    PROCESSING = {
-        'processing:level': 'Ancillary Data Record',
+    PROCESSING = 'L4'
         
-    }
+    
+    
+  
+    
+    # Example collection creation
+    nomad_collection = Collection(
+        id="geops_10_days_lno_collection",
+        title="10 days lno - PySTAC prototype",
+        description="Collection of 10 days of NOMAD data to make a STAC prototype",
+        license="CC-BY-SA",
+        catalog_type=CatalogType.SELF_CONTAINED,
+        extent=Extent(
+            spatial=SpatialExtent([-180, -90, 180, 90]),
+            temporal=TemporalExtent([
+                (datetime(2018, 4, 21), datetime(2018, 4, 30))
+            ])
+        ),
+        stac_extensions=EXTENSIONS,
+        providers=PROVIDERS,
+        extra_fields={
+            'license': LICENSE,
+            'acknowledgment': ACKNOWLEDGMENT,
+            'mission': MISSION,
+            'instruments': INSTRUMENTS,
+            'platform': "LNO",
+            'ssys:targets': "Mars",
+            'sci:publications': PUBLICATIONS,
+            'processing level': PROCESSING,
+        }
+        
+    )
+    
     CATALOG_y2018 = Catalog(
         id='geops_LNO_2018',
         title='ExoMars NOMAD/LNO footprints, year 2018',
@@ -202,7 +214,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             'sci:publications': PUBLICATIONS,
         }
     )
-    
+   
     CATALOG_y2018.add_links([
         Link(
             rel='copyright',
