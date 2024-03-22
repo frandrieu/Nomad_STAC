@@ -419,7 +419,7 @@ def add_items(folder_path, collec, output_dir):
                         roles=['url']
             )
             
-            item.add_asset("Link to the data", asset)
+            item.add_asset("[Link to the data]("+psa_id+")", asset)
             
             EOExtension.add_to(item)
             EOExtension.ext(item).bands = [Band.create(name=order)]

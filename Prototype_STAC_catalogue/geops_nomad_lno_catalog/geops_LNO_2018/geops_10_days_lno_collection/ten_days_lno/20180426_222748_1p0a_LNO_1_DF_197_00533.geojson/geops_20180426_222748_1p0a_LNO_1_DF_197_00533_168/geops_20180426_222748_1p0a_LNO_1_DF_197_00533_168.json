@@ -71,7 +71,7 @@
     }
   ],
   "assets": {
-    "Link to the data": {
+    "[Link to the data]( https://psa.esa.int/psa/#/pages/search?p=urn:esa:psa:em16_tgo_nmd:data_calibrated:nmd_cal_sc_lno_20180426t222748-20180426t233028-d-197)": {
       "href": "ten_days_lno/20180426_222748_1p0a_LNO_1_DF_197_00533.geojson",
       "type": "text/plain",
       "title": "[Link to the data]( https://psa.esa.int/psa/#/pages/search?p=urn:esa:psa:em16_tgo_nmd:data_calibrated:nmd_cal_sc_lno_20180426t222748-20180426t233028-d-197)",
