@@ -268,7 +268,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         title='Géosciences Paris-Saclay STAC catalogs',
         description=(
             'Catalog of [Géosciences Paris-Saclay ](https://www.geops.universite-paris-saclay.fr) STAC catalogs \n'
-        '![ICON](https://www.geops.universite-paris-saclay.fr/wp-content/uploads/2023/04/logo-geops-cnrs-small.jpg'
+        '![ICON](https://hebergement.universite-paris-saclay.fr/MineralogieGEOPS/wp-content/uploads/2023/01/cropped-LOGO-GEOPS-2020-1024x488-1.jpg'
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
@@ -296,7 +296,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         ),
         Link(
             rel='icon',
-            target='https://www.geops.universite-paris-saclay.fr/wp-content/uploads/2023/04/logo-geops-cnrs-small.jpg',
+            target='https://hebergement.universite-paris-saclay.fr/MineralogieGEOPS/wp-content/uploads/2023/01/cropped-LOGO-GEOPS-2020-1024x488-1.jpg',
             media_type=MediaType.JPEG,
             title='GEOPS logo',
         ),  
