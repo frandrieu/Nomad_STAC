@@ -52,27 +52,32 @@ def create_stac_item(file_path, polygon, bbox, start_time_value, lid, item_id):
         bbox=list(bbox),
         datetime=item_datetime,
         properties={},
+        
         #href=lid
     )
 
     # for the moment, we use that schema on because a fix must be set in the official repo
-    item.stac_extensions.append('https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json')
+    item.stac_extensions.append('https://stac-extensions.github.io/ssys/v1.1.0/schema.json')
     item.stac_extensions.append('https://stac-extensions.github.io/file/v2.1.0/schema.json')#)
     item.properties['ssys:targets'] = ['Mars']
     
     item.properties['processing:level']='Ancillary Data Record'
     
     item_projection = ProjectionExtension.ext(item, add_if_missing=True)
-    item_projection.wkt2 = """GEOGCS["GCS_Mars_2000",
-        DATUM["D_Mars_2000",
-            SPHEROID["Mars_2000_IAU_IAG",3396190,169.894447223612,
-                AUTHORITY["ESRI","107905"]],
-            AUTHORITY["ESRI","106905"]],
-        PRIMEM["Reference_Meridian",0,
-            AUTHORITY["ESRI","108900"]],
-        UNIT["degree",0.0174532925199433,
-            AUTHORITY["EPSG","9122"]],
-        AUTHORITY["ESRI","104905"]]"""
+    item_projection.wkt2 = """GEOGCRS["Mars (2015) / Odetic",
+    DATUM["Mars (2015)",
+        ELLIPSOID["Mars (2015)", 3396190, 169.894447223612,
+                 LENGTHUNIT["metre", 1, ID["EPSG", 9001]]],
+                 ANCHOR["Viking 1 lander : 47.95137 W"]],
+        PRIMEM["Reference Meridian", 0,
+            ANGLEUNIT["degree", 0.0174532925199433, ID["EPSG", 9122]]],
+        CS[ellipsoidal, 2],
+            AXIS["geodetic latitude (Lat)", north,
+                ORDER[1],
+                ANGLEUNIT["degree", 0.0174532925199433]],
+            AXIS["geodetic longitude (Lon)", east,
+                ORDER[2],
+                ANGLEUNIT["degree", 0.0174532925199433]]"""
 
     return item
 
@@ -148,7 +153,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
     ]
     
     EXTENSIONS =[
-            "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
+            "https://stac-extensions.github.io/ssys/v1.1.0/schema.json",
             "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
     ]
     
@@ -163,7 +168,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         id="geops_10_days_lno_collection",
         title="10 days lno - PySTAC prototype",
         description="Collection of 10 days of NOMAD data to make a STAC prototype",
-        license="CC-BY-SA",
+        #license="CC-BY-SA",
         catalog_type=CatalogType.SELF_CONTAINED,
         extent=Extent(
             spatial=SpatialExtent([-180, -90, 180, 90]),
@@ -179,7 +184,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             'mission': MISSION,
             'instruments': INSTRUMENTS,
             'platform': "LNO",
-            'ssys:targets': "Mars",
+            'ssys:targets': ["Mars"],
             'sci:publications': PUBLICATIONS,
             'processing level': PROCESSING,
         }
@@ -199,7 +204,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             'acknowledgment': ACKNOWLEDGMENT,
             'mission': MISSION,
             'instruments': INSTRUMENTS,
-            'ssys:targets': "Mars",
+            'ssys:targets': ["Mars"],
             'sci:publications': PUBLICATIONS,
         }
     )
@@ -243,7 +248,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             'acknowledgment': ACKNOWLEDGMENT,
             'mission': MISSION,
             'instruments': INSTRUMENTS,
-            'ssys:targets': "Mars",
+            'ssys:targets': ["Mars"],
             'sci:publications': PUBLICATIONS,
         }
     )
@@ -288,7 +293,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             'acknowledgment': ACKNOWLEDGMENT,
             'mission': MISSION,
             'instruments': INSTRUMENTS,
-            'ssys:targets': "Mars",
+            'ssys:targets': ["Mars"],
             'sci:publications': PUBLICATIONS,
         }
     )
@@ -370,7 +375,7 @@ def add_items(folder_path, collec, output_dir):
         ]
         
         EXTENSIONS =[
-                "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
+                "https://stac-extensions.github.io/ssys/v1.1.0/schema.json",
                 "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
         ]
         
@@ -394,7 +399,7 @@ def add_items(folder_path, collec, output_dir):
                 'mission': MISSION,
                 'instruments': INSTRUMENTS,
                 'platform': "LNO",
-                'ssys:targets': "Mars",
+                'ssys:targets': ["Mars"],
                 'sci:publications': PUBLICATIONS,
                 'processing level': PROCESSING,
             }

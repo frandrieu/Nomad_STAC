@@ -7,7 +7,7 @@
       "Mars"
     ],
     "processing:level": "Ancillary Data Record",
-    "proj:wkt2": "GEOGCS[\"GCS_Mars_2000\",\n        DATUM[\"D_Mars_2000\",\n            SPHEROID[\"Mars_2000_IAU_IAG\",3396190,169.894447223612,\n                AUTHORITY[\"ESRI\",\"107905\"]],\n            AUTHORITY[\"ESRI\",\"106905\"]],\n        PRIMEM[\"Reference_Meridian\",0,\n            AUTHORITY[\"ESRI\",\"108900\"]],\n        UNIT[\"degree\",0.0174532925199433,\n            AUTHORITY[\"EPSG\",\"9122\"]],\n        AUTHORITY[\"ESRI\",\"104905\"]]",
+    "proj:wkt2": "GEOGCRS[\"Mars (2015) / Odetic\",\n    DATUM[\"Mars (2015)\",\n        ELLIPSOID[\"Mars (2015)\", 3396190, 169.894447223612,\n                 LENGTHUNIT[\"metre\", 1, ID[\"EPSG\", 9001]]],\n                 ANCHOR[\"Viking 1 lander : 47.95137 W\"]],\n        PRIMEM[\"Reference Meridian\", 0,\n            ANGLEUNIT[\"degree\", 0.0174532925199433, ID[\"EPSG\", 9122]]],\n        CS[ellipsoidal, 2],\n            AXIS[\"geodetic latitude (Lat)\", north,\n                ORDER[1],\n                ANGLEUNIT[\"degree\", 0.0174532925199433]],\n            AXIS[\"geodetic longitude (Lon)\", east,\n                ORDER[2],\n                ANGLEUNIT[\"degree\", 0.0174532925199433]]",
     "eo:bands": [
       {
         "name": 167
@@ -85,7 +85,7 @@
     73.7146
   ],
   "stac_extensions": [
-    "https://raw.githubusercontent.com/thareUSGS/ssys/main/json-schema/schema.json",
+    "https://stac-extensions.github.io/ssys/v1.1.0/schema.json",
     "https://stac-extensions.github.io/file/v2.1.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
     "https://stac-extensions.github.io/eo/v1.1.0/schema.json"
