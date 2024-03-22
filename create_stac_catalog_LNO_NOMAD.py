@@ -178,8 +178,8 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         id='geops_LNO_2018',
         title='ExoMars NOMAD/LNO footprints, year 2018',
         description=(
-            'Year 2018 Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) \n'
-        '![ICON](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/main/nomad.jpg)'
+            'Year 2018 [Géosciences Paris-Saclay ](https://www.geops.universite-paris-saclay.fr) STAC catalog for the ExoMars NOMAD/LNO datasets footprints \n'
+        '![ICON](https://cdn.sci.esa.int/documents/33431/35217/1567215345347-ExoMars_TGO_NOMAD_FS_625.jpg)'
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
@@ -207,7 +207,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         ),
         Link(
             rel='icon',
-            target='https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/frandrieu/Nomad_STAC/main/nomad.jpg',
+            target='https://cdn.sci.esa.int/documents/33431/35217/1567215345347-ExoMars_TGO_NOMAD_FS_625.jpg',
             media_type=MediaType.JPEG,
             title='NOMAD instrument (credit photo ESA)',
         ),  
@@ -222,7 +222,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         id='geops_nomad_lno_catalog',
         title='ExoMars NOMAD/LNO footprints',
         description=(
-            'Géosciences Paris-Saclay STAC catalog for the ExoMars NOMAD/LNO datasets footprints (https://www.geops.universite-paris-saclay.fr) \n'
+            '[Géosciences Paris-Saclay ](https://www.geops.universite-paris-saclay.fr) STAC catalog for the ExoMars NOMAD/LNO datasets footprints \n'
         '![ICON](https://cdn.sci.esa.int/documents/33431/35217/1567215345347-ExoMars_TGO_NOMAD_FS_625.jpg)'
         ),
         stac_extensions=EXTENSIONS,
@@ -267,7 +267,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         id='geops_catalog_of_catalogs',
         title='Géosciences Paris-Saclay STAC catalogs',
         description=(
-            'Catalog of Géosciences Paris-Saclay STAC catalogs (https://www.geops.universite-paris-saclay.fr) \n'
+            'Catalog of [Géosciences Paris-Saclay ](https://www.geops.universite-paris-saclay.fr) STAC catalogs \n'
         '![ICON](https://www.geops.universite-paris-saclay.fr/wp-content/uploads/2023/04/logo-geops-cnrs-small.jpg'
         ),
         stac_extensions=EXTENSIONS,
