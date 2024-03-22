@@ -415,7 +415,8 @@ def add_items(folder_path, collec, output_dir):
             asset=Asset(title="Link to the data",
                         href=file_path,
                         description='External link: ['+file_path+']('+psa_id+')',
-                        media_type=MediaType.TEXT
+                        media_type=MediaType.TEXT,
+                        roles=['url']
             )
             
             item.add_asset("Link to the data", asset)

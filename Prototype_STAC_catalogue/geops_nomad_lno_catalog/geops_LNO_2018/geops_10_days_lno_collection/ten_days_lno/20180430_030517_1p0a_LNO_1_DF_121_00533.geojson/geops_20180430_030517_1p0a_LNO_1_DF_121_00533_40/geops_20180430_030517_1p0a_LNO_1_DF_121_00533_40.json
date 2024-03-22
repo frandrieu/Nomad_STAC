@@ -75,7 +75,10 @@
       "href": "ten_days_lno/20180430_030517_1p0a_LNO_1_DF_121_00533.geojson",
       "type": "text/plain",
       "title": "Link to the data",
-      "description": "External link: [ten_days_lno/20180430_030517_1p0a_LNO_1_DF_121_00533.geojson]( https://psa.esa.int/psa/#/pages/search?p=urn:esa:psa:em16_tgo_nmd:data_calibrated:nmd_cal_sc_lno_20180430t030517-20180430t035456-d-121)"
+      "description": "External link: [ten_days_lno/20180430_030517_1p0a_LNO_1_DF_121_00533.geojson]( https://psa.esa.int/psa/#/pages/search?p=urn:esa:psa:em16_tgo_nmd:data_calibrated:nmd_cal_sc_lno_20180430t030517-20180430t035456-d-121)",
+      "roles": [
+        "url"
+      ]
     }
   },
   "bbox": [
