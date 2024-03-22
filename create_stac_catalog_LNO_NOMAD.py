@@ -406,17 +406,15 @@ def add_items(folder_path, collec, output_dir):
             item_id='geops_'+item_id
             # Create a STAC item for each polygon
             item = create_stac_item(file_path, polygon, bbox, start_time_value, psa_id, item_id)
-            #add an asset
-            #thumbnail_path = "Mars_Viking_global.jpg"
-            '''
-            item.add_asset(
-                "thumbnail",
-                Asset(
-                    href=os.path.relpath(thumbnail_path, output_dir),
-                    media_type=MediaType.JPEG
-                )
+            #add an 
+            asset=Asset(title="Link to the data",
+                        href=file_path,
+                        description='External link: ['+file_path+']('+psa_id+')',
+                        media_type=MediaType.TEXT
             )
-            '''
+            
+            item.add_asset("Link to the data", asset)
+            
             EOExtension.add_to(item)
             EOExtension.ext(item).bands = [Band.create(name=order)]
             # Add the item to the collection
