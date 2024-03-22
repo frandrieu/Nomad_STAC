@@ -1280,7 +1280,9 @@
   "acknowledgment": "ESA/BIRA-IASB/Universit\u00e9 Paris-Saclay - GEOPS",
   "mission": "ExoMars",
   "instruments": "NOMAD/LNO",
-  "platform": "LNO",
+  "platform": [
+    "LNO"
+  ],
   "ssys:targets": [
     "Mars"
   ],

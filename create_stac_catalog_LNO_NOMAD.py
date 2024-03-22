@@ -157,7 +157,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
             "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
     ]
     
-    PROCESSING = 'L4'
+    PROCESSING = ['L1']
         
     
     
@@ -398,7 +398,7 @@ def add_items(folder_path, collec, output_dir):
                 'acknowledgment': ACKNOWLEDGMENT,
                 'mission': MISSION,
                 'instruments': INSTRUMENTS,
-                'platform': "LNO",
+                'platform': ["LNO"],
                 'ssys:targets': ["Mars"],
                 'sci:publications': PUBLICATIONS,
                 'processing level': PROCESSING,
