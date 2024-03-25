@@ -2,7 +2,7 @@
   "type": "Catalog",
   "id": "geops_catalog_of_catalogs",
   "stac_version": "1.0.0",
-  "description": "Catalog of [G\u00e9osciences Paris-Saclay ](https://www.geops.universite-paris-saclay.fr) STAC catalogs \n![ICON](https://hebergement.universite-paris-saclay.fr/MineralogieGEOPS/wp-content/uploads/2023/01/cropped-LOGO-GEOPS-2020-1024x488-1.jpg",
+  "description": "Catalog of [G\u00e9osciences Paris-Saclay ](https://www.geops.universite-paris-saclay.fr) STAC catalogs \n![GEOPS_LOGO](https://hebergement.universite-paris-saclay.fr/MineralogieGEOPS/wp-content/uploads/2023/01/cropped-LOGO-GEOPS-2020-1024x488-1.jpg)",
   "links": [
     {
       "rel": "root",

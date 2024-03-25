@@ -284,8 +284,7 @@ def create_stac_collection(folder_path, catalog_title='5 day Nomad Collection'):
         id='geops_catalog_of_catalogs',
         title='Géosciences Paris-Saclay STAC catalogs',
         description=(
-            'Catalog of [Géosciences Paris-Saclay ](https://www.geops.universite-paris-saclay.fr) STAC catalogs \n'
-        '![ICON](https://hebergement.universite-paris-saclay.fr/MineralogieGEOPS/wp-content/uploads/2023/01/cropped-LOGO-GEOPS-2020-1024x488-1.jpg'
+            "Catalog of [G\u00e9osciences Paris-Saclay ](https://www.geops.universite-paris-saclay.fr) STAC catalogs \n![GEOPS_LOGO](https://hebergement.universite-paris-saclay.fr/MineralogieGEOPS/wp-content/uploads/2023/01/cropped-LOGO-GEOPS-2020-1024x488-1.jpg)"
         ),
         stac_extensions=EXTENSIONS,
         extra_fields={
@@ -412,14 +411,31 @@ def add_items(folder_path, collec, output_dir):
             # Create a STAC item for each polygon
             item = create_stac_item(file_path, polygon, bbox, start_time_value, psa_id, item_id)
             #add an 
-            asset=Asset(title="[Link to the data]("+psa_id+")",
-                        href=file_path,
-                        description='External link: ['+file_path+']('+psa_id+')',
-                        media_type=MediaType.TEXT,
-                        roles=['url']
+            asset=Asset(title="Link to the data",
+                        href=psa_id,
+                        roles=["data"]
             )
-            
-            item.add_asset("[Link to the data]("+psa_id+")", asset)
+            '''
+            "assets": {
+    "fits_data_file": { // tu mets le mot clé que tu souhaites – téléchargement de la donnée
+      "href": "http://psup.ias.u-psud.fr/sitools/datastorage/user/storage/marsdata/omega/fits/albedo_filled.fits",
+      "type": "application/fits",
+      "title": "FITS data file",
+      "roles": [
+        "data"
+      ]
+    },
+    "fits_preview_file": {  // tu mets le mot clé que tu souhaites ; s’affiche à la place de la carte
+      "href": "http://psup.ias.u-psud.fr/sitools/datastorage/user/storage/marsdata/omega/png/albedo_filled_reduce.png",
+      "type": "image/png",
+      "title": "Preview PNG image file",
+      "roles": [
+        "thumbnail"
+      ]
+    }
+  },
+    '''        
+            item.add_asset("Link to the data", asset)
             
             EOExtension.add_to(item)
             EOExtension.ext(item).bands = [Band.create(name=order)]

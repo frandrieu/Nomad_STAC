@@ -71,13 +71,11 @@
     }
   ],
   "assets": {
-    "[Link to the data]( https://psa.esa.int/psa/#/pages/search?p=urn:esa:psa:em16_tgo_nmd:data_calibrated:nmd_cal_sc_lno_20180423t095856-20180423t110136-d-171)": {
-      "href": "ten_days_lno/20180423_095856_1p0a_LNO_1_DP_171_00533.geojson",
-      "type": "text/plain",
-      "title": "[Link to the data]( https://psa.esa.int/psa/#/pages/search?p=urn:esa:psa:em16_tgo_nmd:data_calibrated:nmd_cal_sc_lno_20180423t095856-20180423t110136-d-171)",
-      "description": "External link: [ten_days_lno/20180423_095856_1p0a_LNO_1_DP_171_00533.geojson]( https://psa.esa.int/psa/#/pages/search?p=urn:esa:psa:em16_tgo_nmd:data_calibrated:nmd_cal_sc_lno_20180423t095856-20180423t110136-d-171)",
+    "Link to the data": {
+      "href": " https://psa.esa.int/psa/#/pages/search?p=urn:esa:psa:em16_tgo_nmd:data_calibrated:nmd_cal_sc_lno_20180423t095856-20180423t110136-d-171",
+      "title": "Link to the data",
       "roles": [
-        "url"
+        "data"
       ]
     }
   },
