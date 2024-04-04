@@ -33,16 +33,18 @@ import os as os
 ########################################################################################################
 ####### read the data
 
-WORKING_DIRECTORY = "/Users/fandrieu/Documents/Nomad_STAC"
+WORKING_DIRECTORY = "/Users/fandrieu/Documents/Nomad_STAC/Create_footprints"
 # filename = "20230203_035932_1p0a_LNO_1_DF_168" #Olympus
 # filename = "20230124_234445_1p0a_LNO_1_DF_168" #Olympus, DP_189
 # filename = "20221125_082524_1p0a_LNO_1_DF_190" #Olympus, DP_168
 # filename = "20221116_042334_1p0a_LNO_1_DP_189" #Olympus, 168 and 189 no 190 !
 
-# filename = "20230201_004835_1p0a_LNO_1_DF_168" #Ascraeus, DF_168
+# filename = "20230201_004835_1p0a_LNO_1_DF_168" #Ascraeus, DF_168 
 # filename = "20230124_213650_1p0a_LNO_1_DP_168" #Ascraeus, DF_189
 #filename = "20211207_103950_1p0a_LNO_1_DP_168" #Arsia, only 168_DP (older) and 168_DF 
-filename = "20230105_174515_1p0a_LNO_1_DP_168"
+#filename = "20230105_174515_1p0a_LNO_1_DP_168" 20181022_215431_1p0a_LNO_1_DP_167 20181015_192906_1p0a_LNO_1_DF_162 20181009_024109_1p0a_LNO_1_DP_168 20230802_210148_1p0a_LNO_1_DF_132 20181004_224305_1p0a_LNO_1_DF_134 20181003_230910_1p0a_LNO_1_DP_190
+filename = "20181003_230910_1p0a_LNO_1_DP_190"
+
 #20221121_060628_1p0a_LNO_1_DF_168
 # filename = "20230123_220045_1p0a_LNO_1_DP_168" #Arsia, DF_189
 
@@ -121,14 +123,41 @@ for footpos in range(0, nb_footprint):
     latvector = np.ravel(np.array([latp4[footpos,:], latp1[footpos,:], latp2[footpos,:], latp3[footpos,:]]))
     lonvector = np.ravel(np.array([lonp4[footpos,:], lonp1[footpos,:], lonp2[footpos,:], lonp3[footpos,:]]))
     
-#### START MODIFICATIONS 01/03/24 !!!!
-    if (np.min(lonvector) < -170.) and (np.max(lonvector) > 170. ):
-       lonvector1=lonvector[np.where(lonvector < 0.)]
-       lonvector2=lonvector[np.where(lonvector > 0.)]
-       latvector1=latvector[np.where(lonvector < 0.)]
-       latvector2=latvector[np.where(lonvector > 0.)]
-       y1 = latvector1[0] + ((180.-lonvector1[0]) * (latvector2[0] - latvector1[0])) / (lonvector2[0]+180. - lonvector1[0])
-       y2 = latvector1[1] + ((180.-lonvector1[1]) * (latvector2[1] - latvector1[1])) / (lonvector2[1]+180. - lonvector1[1])
+
+    if (np.min(lonvector) < -170.) and (np.max(lonvector) > 170. ):  
+        #### START MODIFICATIONS 04/04/24 !!!!
+       df = pd.DataFrame(
+           {'Point': namvector,
+            'Latitude': latvector,
+            'Longitude': lonvector%360})
+       gdf = geopandas.GeoDataFrame(
+           df, geometry=geopandas.points_from_xy(df.Longitude, df.Latitude))
+       gdf.crs = pyproj.CRS('+proj=longlat +a=3396190 +b=3376200')
+       convexhull = gdf.unary_union.convex_hull
+       convexhullbound = convexhull.boundary.coords.xy
+       newlatvector=np.array(convexhullbound[1])
+       newlonvector=np.array(convexhullbound[0])
+       lonvector1=newlonvector[np.where(newlonvector > 180.)]
+       lonvector1=lonvector1-360
+       lonvector2=newlonvector[np.where(newlonvector <= 180.)]
+       latvector1=newlatvector[np.where(newlonvector > 180.)]
+       latvector2=newlatvector[np.where(newlonvector <= 180.)]
+       
+       #finding where the polygon crosses 180
+       npoints=len(newlonvector)
+       realnewlonvector=np.copy(newlonvector)
+       realnewlonvector[np.where(newlonvector>180)]=newlonvector[np.where(newlonvector>180)]-180
+       sort=np.argsort(realnewlonvector)
+       pos1=sort[0] #closest point to 180 and above 180
+       if (newlonvector[(pos1+1)%npoints] > 180.): #finding the first point above 180
+           p1=pos1
+       else: 
+           p1=pos1-(len(lonvector1)-1) 
+       p2=(p1+(len(lonvector1)-1))%npoints #last point above 180
+       
+       y1 = newlatvector[(p1-1)%npoints] + ((180.-newlonvector[(p1-1)%npoints]) * (newlatvector[p1%npoints] - newlatvector[(p1-1)%npoints])) / (newlonvector[p1%npoints] - newlonvector[(p1-1)%npoints])
+       y2 = newlatvector[p2%npoints] + ((180.-newlonvector[p2%npoints]) * (newlatvector[(p2+1)%npoints] - newlatvector[p2%npoints])) / (newlonvector[(p2+1)%npoints] - newlonvector[p2%npoints])
+#####END MODIFICATIONS 04/04/24 !!!!
        newlatvector1=np.append(latvector1, [y1, y2])
        newlonvector1=np.append(lonvector1, [-180., -180.])
        newlatvector2=np.append(latvector2, [y1, y2])
@@ -217,7 +246,7 @@ for footpos in range(0, nb_footprint):
         order_all.append( int(order) )
  
         
-#####END MODIFICATIONS 01/03/24 !!!!
+
     
 # generate average global values
 mean_ls =  np.mean(ls, axis=1)
